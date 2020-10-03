@@ -1,9 +1,15 @@
 import express from 'express';
-import path from 'path';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-import config from './config';
-import userRoute from './routes/userRoute';
-import productRoute from './routes/productRoute';
-import orderRoute from './routes/orderRoute';
-import uploadRoute from './routes/uploadRoute';
+import data from './data';
+
+const app = express();
+
+const PORT = process.env.PORT || 666
+
+app.get("/api/products", (req, res) => {
+
+    res.send(data.products);
+});
+
+app.listen(PORT, () => {
+    console.log(`Listening on Port: ${PORT}`)
+});

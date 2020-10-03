@@ -1,7 +1,23 @@
-import React from "react";
-import productdata from '../data.js';
+import React, { useEffect, useState } from "react";
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 function HomeScreen(props) {
+
+  // Define a Hook:
+  const [products, setProduct] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () =>{
+      const {data} =await axios.get("/api/products");
+      setProduct(data);
+    }
+    fetchData();
+    return () => {
+      //
+    };
+  }, [])
+
   return (
     <>
       <div
@@ -65,13 +81,15 @@ function HomeScreen(props) {
       <div className="row">
 
 {
-    productdata.products.map(product =>
+    products.map(product =>
     <div className="col-lg-4 col-md-6 mb-4">
     <div className="card h-100">
-        <a href="shopitem.html"><img className="card-img-top" src={product.image} alt="" /></a>
+        <Link to={'/product/' + product._id}>
+          <img className="card-img-top" src={product.image} alt="" />
+        </Link>
         <div className="card-body">
         <h4 className="card-title">
-            <a href="shopitem.html">{product.name}</a>
+            <Link to={'/product/' + product._id}>{product.name}</Link>
         </h4>
         <h5>{product.price}</h5>
         <p className="card-text">{product.description}</p>
