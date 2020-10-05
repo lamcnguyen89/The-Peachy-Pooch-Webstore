@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from "react";
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import {useSelector, useDispatch} from 'react-redux';
+import {listProducts} from '../actions/productActions';
 
 function HomeScreen(props) {
 
   // Define a Hook:
-  const [products, setProduct] = useState([]);
+  const productList = useSelector(state => state.productList);
+  const { products, loading, error} = productList;
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () =>{
-      const {data} =await axios.get("/api/products");
-      setProduct(data);
-    }
-    fetchData();
+    dispatch(listProducts());
+
     return () => {
       //
     };
-  }, [])
 
-  return (
+  },[])
+
+  return  (
     <>
       <div
         id="carouselExampleIndicators"
@@ -80,30 +82,30 @@ function HomeScreen(props) {
 
       <div className="row">
 
-{
-    products.map(product =>
-    <div className="col-lg-4 col-md-6 mb-4">
-    <div className="card h-100">
-        <Link to={'/product/' + product._id}>
-          <img className="card-img-top" src={product.image} alt="" />
-        </Link>
-        <div className="card-body">
-        <h4 className="card-title">
-            <Link to={'/product/' + product._id}>{product.name}</Link>
-        </h4>
-        <h5>{product.price}</h5>
-        <p className="card-text">{product.description}</p>
-        </div>
-        <div className="card-footer">
-        <small className="text-muted">{product.rating}</small>
-        </div>
-    </div>
-    </div>
-    )
-}
+        {
+            products.map(product =>
+              <div className="col-lg-4 col-md-6 mb-4" key={product._id}>
+                <div className="card h-100">
+                    <Link to={'/product/' + product._id}>
+                      <img className="card-img-top" src={product.image} alt="" />
+                    </Link>
+                    <div className="card-body">
+                    <h4 className="card-title">
+                        <Link to={'/product/' + product._id}>{product.name}</Link>
+                    </h4>
+                    <h5>{product.price}</h5>
+                    <p className="card-text">{product.description}</p>
+                    </div>
+                    <div className="card-footer">
+                    <small className="text-muted">{product.rating}</small>
+                    </div>
+                </div>
+              </div>
+            )
+        }
 
-</div>
+      </div>
     </>
-  );
+  )
 }
 export default HomeScreen;
