@@ -93,7 +93,7 @@ function HomeScreen(props) {
                     <h4 className="card-title">
                         <Link to={'/product/' + product._id}>{product.name}</Link>
                     </h4>
-                    <h5>{product.price}</h5>
+                    <h5>${product.price}</h5>
                     <p className="card-text">{product.description}</p>
                     </div>
                     <div className="card-footer">
