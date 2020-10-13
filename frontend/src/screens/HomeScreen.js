@@ -1,24 +1,34 @@
-import React, { useEffect, useState } from "react";
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import {useSelector, useDispatch} from 'react-redux';
-import {listProducts} from '../actions/productActions';
+import { useSelector, useDispatch } from 'react-redux';
+import { listProducts } from '../actions/productActions';
+import Rating from '../components/Rating';
 
 function HomeScreen(props) {
 
-  // Define a Hook:
-  const productList = useSelector(state => state.productList);
-  const { products, loading, error} = productList;
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const [sortOrder, setSortOrder] = useState('');
+  const category = props.match.params.id ? props.match.params.id : '';
+  const productList = useSelector((state) => state.productList);
+  const { products, loading, error } = productList;
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(listProducts());
+    dispatch(listProducts(category));
 
     return () => {
       //
     };
+  }, [category]);
 
-  },[])
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(listProducts(category, searchKeyword, sortOrder));
+  };
+  const sortHandler = (e) => {
+    setSortOrder(e.target.value);
+    dispatch(listProducts(category, searchKeyword, sortOrder));
+  };
 
   return  (
     <>

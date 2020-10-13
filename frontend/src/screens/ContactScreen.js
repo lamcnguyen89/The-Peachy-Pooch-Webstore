@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import { Redirect} from 'react-router-dom';
 
-class Contact extends Component {
+class ContactScreen extends Component {
     constructor(props) {
         // Remember that super() is called inside a react componnt only if it has a constructor. 
         // super(props) allows access to this.props in the constructor
@@ -130,4 +130,4 @@ class Contact extends Component {
     }
 }
  
-export default Contact;
+export default ContactScreen;

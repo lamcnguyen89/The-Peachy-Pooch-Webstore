@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
@@ -13,9 +14,14 @@ import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingScreen from './screens/ShippingScreen';
 import SigninScreen from './screens/SigninScreen';
-import ContactUs from './screens/ContactUs';
+import ContactScreen from './screens/ContactScreen';
+import ErrorScreen from './screens/ErrorScreen';
+import ThanksScreen from './screens/ThanksScreen';
 
 function App() {
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+ 
   return (
 
    <BrowserRouter>
@@ -37,7 +43,23 @@ function App() {
               <Link className="nav-link" to="/">Products</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/contact">Contact Us</a>
+                <Link className="nav-link" to="/contact">Contact Us</Link>
+              </li>
+              <li className="nav-item">
+                {userInfo ? 
+                  (<Link className="nav-link" to="/profile">{userInfo.name}</Link>) 
+                    : 
+                  (<Link className="nav-link" to="/signin">Sign In</Link>)
+                } 
+
+              </li>
+              <li className="nav-item">
+                  {userInfo && userInfo.isAdmin && 
+                      (<Link className="nav-link" to="/orders">View Customer Orders</Link>)}
+              </li>
+              <li className="nav-item">
+                  {userInfo && userInfo.isAdmin && 
+                      (<Link className="nav-link" to="/products">Edit Products</Link>)}     
               </li>
             </ul>
           </div>
@@ -56,12 +78,10 @@ function App() {
           
             <div className="content col-lg-9">
                   <Route path="/" exact={true} component={HomeScreen} />
-                  <Route path="/contact" exact={true} component={ContactUs} />
                   <Route path= "/product/:id" component={ProductScreen} />
                   <Route path="/orders" component={OrdersScreen} />
                   <Route path="/profile" component={ProfileScreen} />
                   <Route path="/order/:id" component={OrderScreen} />
-                  <Route path="/products" component={ProductsScreen} />
                   <Route path="/shipping" component={ShippingScreen} />
                   <Route path="/payment" component={PaymentScreen} />
                   <Route path="/placeorder" component={PlaceOrderScreen} />
@@ -69,6 +89,10 @@ function App() {
                   <Route path="/register" component={RegisterScreen} />
                   <Route path="/cart/:id?" component={CartScreen} />
                   <Route path="/products" component={ProductsScreen} />
+                  <Route path="/contact" exact={true} component={ContactScreen} />
+                  <Route path="/thanks" exact={true} component={ThanksScreen} />
+                  <Route path="/error" exact={true} component={ErrorScreen} />
+
             </div>
 
         </div>
@@ -77,7 +101,7 @@ function App() {
 
       <footer className="py-5 bg-dark">
         <div className="container">
-          <p className="m-0 text-center text-white">Copyright © Your Website 2020</p>
+          <p className="m-0 text-center text-white">Copyright © The Peachy Pooch 2020</p>
         </div>
       </footer>
     </div>

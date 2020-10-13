@@ -1,37 +1,46 @@
 export default {
-    products: [
-        {   _id: "1",
-            name: "Berry Butter Beauty Vegetarian",
-            image: "/images/DSCF4126.jpg",
-            price: "12.00",
-            description: "Fresh fruits, peanut butter and assorted other whole food ingredients for super powers",
-            rating: "&#9733; &#9733; &#9733; &#9733; &#9734;",
-            countInStock: 5
-        },
-        {   _id: "2",
-            name: "Berry Butter Beauty Beef",
-            image: "/images/DSCF4126.jpg",
-            price: "12.00",
-            description: "Fresh fruits, peanut butter and assorted other whole food ingredients for super powers",
-            rating: "&#9733; &#9733; &#9733; &#9733; &#9734;",
-            countInStock: 5
-        },
-        {   _id: "3",
-            name: "Berry Butter Beauty Pork",
-            image: "/images/DSCF4126.jpg",
-            price: "12.00",
-            description: "Fresh fruits, peanut butter and assorted other whole food ingredients for super powers",
-            rating: "&#9733; &#9733; &#9733; &#9733; &#9734;",
-            countInStock: 8
-        },
-        {   _id: "4",
-            name: "Berry Butter Beauty Fish",
-            image: "/images/DSCF4126.jpg",
-            price: "12.00",
-            description: "Fresh fruits, peanut butter and assorted other whole food ingredients for super powers",
-            rating: "&#9733; &#9733; &#9733; &#9733; &#9734;",
-            countInStock: 2
-        }
-
-    ]
+  products: [
+    {
+      _id: '1',
+      name: 'Slim Shirt',
+      category: 'Shirts',
+      image: '/images/d1.jpg',
+      price: 60,
+      brand: ' Nike',
+      rating: 4.5,
+      numReviews: 10,
+      countInStock: 6,
+    },
+    {
+      _id: '2',
+      name: 'Fit Shirt',
+      category: 'Shirts',
+      image: '/images/d1.jpg',
+      price: 50,
+      brand: ' Nike',
+      rating: 4.2,
+      numReviews: 5
+    },
+    {
+      _id: '3',
+      name: 'Best Pants',
+      category: 'Pants',
+      image: '/images/d1.jpg',
+      price: 70,
+      brand: ' Nike',
+      rating: 4.5,
+      numReviews: 8,
+      countInStock: 6,
+    }, {
+      _id: '4',
+      name: 'Best Pants',
+      category: 'Pants',
+      image: '/images/d1.jpg',
+      price: 70,
+      brand: ' Nike',
+      rating: 4.5,
+      numReviews: 8,
+      countInStock: 6,
+    },
+  ]
 }
