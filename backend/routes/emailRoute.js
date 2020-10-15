@@ -6,6 +6,7 @@
 // include the path module to allow the JS file to move to the correct path to the specified file
 //=============================================
 const path = require("path");
+
 const nodemailer = require('nodemailer');
 require("dotenv").config();
 
@@ -17,10 +18,10 @@ const GMAIL_PASS = process.env.GMAIL_PASS
 //=============================================
 
 module.exports = function(app) {
-
     // POST- for sending form data that the user inputs in the contact form to gmail
-    app.post("/contact", function(req,res) {
+    app.post("/send", function(req,res) {
 
+        
         // Create the SMTP server for Gmail
         const smtpTrans = nodemailer.createTransport({
             host: 'smtp.gmail.com',
@@ -29,35 +30,38 @@ module.exports = function(app) {
             auth: {
                 user: GMAIL_USER,
                 pass: GMAIL_PASS
-            }
-        })
+                }
+            })
 
         // Specify what the email will look like
         const mailOpts = {
-            from: 'Your sender info here', // This is ignored by Gmail
+            from: req.body.email,
             to: GMAIL_USER,
-            subject: 'Message from The Peachy Pooch',
+            subject: 'Message from the Peachy Pooch Webstore',
             text: 
-`Name:
-${req.body.name}
-
-Email Address:
-(${req.body.email})
+`Name:${req.body.name} 
+Email Address:(${req.body.email})
 
 Message: 
 ${req.body.message}`
-        }
+                }
 
         // Attempt to send the email
         smtpTrans.sendMail(mailOpts, (error, response) => {
-            if (error) {
-                res.redirect('/error') 
+            if (err) {
+                res.json({
+                    status: 'fail'
+                })
             }
             else {
-                res.redirect('/thanks') 
+                res.json({
+                    status: 'sucess'
+                })
             }
         });
 
     });
+
+}
+
   
-};

@@ -7,6 +7,7 @@ import userRoute from './routes/userRoute';
 import productRoute from './routes/productRoute';
 import orderRoute from './routes/orderRoute';
 import uploadRoute from './routes/uploadRoute';
+const cors = require('cors');
 
 const mongodbUrl = config.MONGODB_URL;
 mongoose
@@ -19,6 +20,7 @@ mongoose
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 app.use('/api/uploads', uploadRoute);
 app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
