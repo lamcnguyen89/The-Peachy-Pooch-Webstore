@@ -18,6 +18,11 @@ import ContactScreen from './screens/ContactScreen';
 import ErrorScreen from './screens/ErrorScreen';
 import ThanksScreen from './screens/ThanksScreen';
 
+
+
+
+
+
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -25,48 +30,45 @@ function App() {
   return (
 
    <BrowserRouter>
-
     
-      <div>
-      {/* Navigation */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
-            The Peachy Pooch!
-          </Link>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarResponsive">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-              <Link className="nav-link" to="/">Products</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/contact">Contact Us</Link>
-              </li>
-              <li className="nav-item">
-                {userInfo ? 
-                  (<Link className="nav-link" to="/profile">{userInfo.name}</Link>) 
-                    : 
-                  (<Link className="nav-link" to="/signin">Sign In</Link>)
-                } 
+      <div className="background">
 
-              </li>
-              <li className="nav-item">
+      <nav className="navbar navbar-expand-lg navbar-dark">
+        <div className="container">
+
+            <div>
+              <a href="https://www.facebook.com/tennisinc/" className="fa fa-facebook fa-fw" target="_blank"></a>
+              <a href="https://twitter.com/TennisInc" className="fa fa-twitter fa-fw" target="_blank"></a>
+              <a href="http://soundcloud.com/tennisinc" className="fa fa-soundcloud fa-fw" target="_blank"></a>
+              <a href="https://www.instagram.com/tennisinc/" className="fa fa-instagram fa-fw" target="_blank"></a>
+              <a href="https://www.youtube.com/channel/UCVOdVSbZ_U2YblectplZgyw" className="fa fa-youtube fa-fw" target="_blank"></a>
+              <a href="https://open.spotify.com/artist/1ybAN3utgdoUL1MUCtH4QM" className="fa fa-spotify fa-fw" target="_blank"></a>
+            </div>
+            
+            <button className="navbar-toggler navbar-light dropdown" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div className="navbar-nav">
+                  <Link className="nav-item nav-link navigationtext" to="/">Products <span className="sr-only">(current)</span></Link>
+                  <Link className="nav-item nav-link navigationtext" to="/contact">Contact Us</Link>
+
+                  {userInfo ? 
+                    (<Link className="nav-item nav-link navigationtext" to="/profile">{userInfo.name}</Link>) : (<Link className="nav-item nav-link navigationtext" to="/signin">Sign In</Link>)
+                  } 
+
                   {userInfo && userInfo.isAdmin && 
-                      (<Link className="nav-link" to="/orders">View Customer Orders</Link>)}
-              </li>
-              <li className="nav-item">
+                      (<Link className="nav-item nav-link navigationtext" to="/orders">View Customer Orders</Link>)
+                  }
+
                   {userInfo && userInfo.isAdmin && 
-                      (<Link className="nav-link" to="/products">Edit Products</Link>)}     
-              </li>
-            </ul>
-          </div>
+                      (<Link className="nav-item nav-link navigationtext" to="/products">Edit Products</Link>)}  
+
+                  
+                </div>
+              </div>
         </div>
-      </nav>
-      {/* Page Content */}
-      
+    </nav>
       
   
       <main className="container p-2 my-4">
@@ -99,7 +101,7 @@ function App() {
 
       </main>
 
-      <footer className="py-5 bg-dark">
+      <footer className="py-5 fixed-bottom">
         <div className="container">
           <p className="m-0 text-center text-white">Copyright © The Peachy Pooch 2020</p>
         </div>

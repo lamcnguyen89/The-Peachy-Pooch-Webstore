@@ -57,7 +57,7 @@ class ContactScreen extends Component {
                 The formatting for this form was taken off Bootstrap. */}
                 <main className="container p-2 my-4">
                 
-                    <h1 className="headingformats">Contact Me</h1>
+                    <h1 className="headingformats">Contact Us</h1>
                     <hr />
                         
                         <article className="row justify-content-center">
@@ -117,10 +117,7 @@ class ContactScreen extends Component {
                         <article className="row justify-content-center mt-3">
                             <article className="col-sm-12">
                                 <p>
-                                    My name: Lam C Nguyen<br />
-                                    <a href="https://github.com/lamcnguyen89">Visit my Github</a><br />
-                                    <a href="http://www.linkedin.com/in/lamcnguyen89">Visit my LinkedIn Profile</a><br />
-                                    <a href="https://drive.google.com/file/d/147rg_ZnJoThDnWRMXupbUYjnQk-vhjoe/view?usp=sharing">View my Resume</a>
+
                                 </p>
                             </article>
                         </article> 

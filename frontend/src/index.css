@@ -7,6 +7,11 @@ body {
   height: 100vh;
   margin: 0;
 }
+
+.background {
+  background-color: #edbbca;
+}
+
 button {
   font-size: 1.6rem;
 }
@@ -28,7 +33,7 @@ button {
 }
 .header {
   grid-area: header;
-  background-color: #203040;
+  background-color: #09dcef;
   color: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -54,7 +59,7 @@ button {
 }
 .footer {
   grid-area: footer;
-  background-color: #203040;
+  background-color: #09dcef;
   color: #ffffff;
   display: flex;
   justify-content: center;
@@ -462,4 +467,15 @@ tbody > tr:nth-child(odd) {
 
 .categories a:hover {
   background-color: #c0c0c0;
+}
+
+/* Navigation Bar */
+nav {
+  background-color: #0f8994;
+}
+
+
+/* Footer */
+footer {
+  background-color: #0f8994;
 }
